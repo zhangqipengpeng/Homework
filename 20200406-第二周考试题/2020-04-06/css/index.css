@@ -1,0 +1,21 @@
+.productBox {
+    display: flex;
+    margin: 10px auto;
+    flex-wrap: wrap;
+}
+
+.productBox .card {
+    width: 19.2%;
+    margin-right: 1%;
+    margin-top: 10px;
+}
+
+.productBox .card:nth-child(5n+5) {
+    margin-right: 0;
+}
+
+.productBox .card .card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
