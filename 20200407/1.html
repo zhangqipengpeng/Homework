@@ -54,11 +54,13 @@
                 }
             }
             var maxCount = 0;//假设是出现次数最多的次数
-            var maxString = ``;//假设这个字符串是次数出现最多的字符串
+            var maxString = ``;//假设这个字符是次数出现最多的字符
             for (var key in obj) {
                 if (maxCount < obj[key]) {
                     maxCount = obj[key];//保存最大的次数
                     maxString = key;
+                } else if (obj[key] === maxCount) {
+                    maxString += `|${key}`
                 }
             }
             return `出现次数最多的字符:${maxString} 出现了:${maxCount}次`;
