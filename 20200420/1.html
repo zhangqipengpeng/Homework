@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回到顶部</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 5000px;
+            background: linear-gradient(salmon, yellow);
+        }
+
+        #up {
+            position: fixed;
+            right: 50px;
+            top: 500px;
+            background-color: #c5c4c4;
+            color: #fff;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            user-select: none;
+            font-size: 16px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="up">
+        <a>回到顶部</a>
+    </div>
+
+    <script>
+        let up = document.querySelector('#up'),
+            HTML = document.documentElement;
+        window.onscroll = function () {
+            if (HTML.scrollTop > HTML.clientHeight) {
+                up.style.display = 'block';
+            } else {
+                up.style.display = 'none';
+            }
+        };
+        up.onclick = function () {
+            if (this.isGoing) return;
+            this.isGoing = true;
+            let A = HTML.scrollTop;
+            let s = A / 50;
+            let timer = setInterval(() => {
+                A -= s;
+                if (A <= 0) {
+                    A = 0;
+                    clearInterval(timer);
+                    this.isGoing = false;
+                };
+                HTML.scrollTop = A;
+            }, 20);
+        };
+    </script>
+</body>
+
+</html>
